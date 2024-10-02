@@ -5,14 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { CadastroMedicoModule } from './cadastro-medico/cadastro-medico.module';
-import { CadastroModule } from './cadastro/cadastro.module';
-import { LoginModule } from './login/login.module';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
