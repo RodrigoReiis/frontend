@@ -3,10 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login.component';
 
-export const routes: Routes = [
-  { path: '', component: LoginComponent }
-]
-
 @NgModule({
   declarations: [],
   imports: [RouterModule],
