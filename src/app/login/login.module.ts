@@ -6,6 +6,6 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [LoginComponent],
-  imports: [LoginRoutingModule, CommonModule, FormControl, FormsModule, ReactiveFormsModule]
+  imports: [LoginRoutingModule, ReactiveFormsModule]
 })
 export class LoginModule { }
