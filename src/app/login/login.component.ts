@@ -1,20 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { LoginService } from '../services/login.service';
+import { Route, Router, Routes } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-login-a',
+  standalone: true,
+  imports: [ReactiveFormsModule],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrl: './login.component.scss'
 })
-export class LoginComponent implements OnInit {
-  form: FormGroup = new FormGroup({});
-
-  ngOnInit(): void {
-    this.form = new FormGroup({
+export class LoginComponent {
+  form = new FormGroup({
       email: new FormControl(''),
       senha: new FormControl('')
-    })
+  });
+
+  constructor(private loginService: LoginService, private router: Router) {}
+
+  ngOnInit(): void {
   }
 
-
+  doLogin() {
+    const email = this.form.get('email')?.value
+    const senha = this.form.get('email')?.value
+    if(!email || !senha ) return;
+    this.loginService.authentication(email, senha);
+  }
 }

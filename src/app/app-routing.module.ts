@@ -4,10 +4,16 @@ import { CadastroComponent } from './cadastro/cadastro.component';
 import { CadastroMedicoComponent } from './cadastro-medico/cadastro-medico.component';
 import { MedicosComponent } from './medicos/medicos.component';
 import { HomeComponent } from './home/home.component';
-import { routeGuardGuard } from './route-guard.guard';
 import { DisponibilidadeComponent } from './disponibilidade/disponibilidade.component';
 import { AgendamentoComponent } from './agendamento/agendamento.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from 'src/guards/authGuard.guard';
+import { PacientesAgendadosComponent } from './pacientes-agendados/pacientes-agendados.component';
+
+const userTypeEnum = {
+  MEDICO: 'M',
+  PACIENTE: 'P'
+}
 
 const routes: Routes = [
   {
@@ -22,15 +28,18 @@ const routes: Routes = [
   {
     path: 'home', component: HomeComponent, children: [
       {
-        path: 'medicos', component: MedicosComponent, canActivateChild: [routeGuardGuard]
+        path: 'medicos', component: MedicosComponent, canActivateChild: [AuthGuard],
       },
       {
-        path: 'agendamentos', component: AgendamentoComponent, canActivateChild: [routeGuardGuard]
+        path: 'agendamentos', component: AgendamentoComponent, canActivateChild: [AuthGuard]
       },
       {
-        path: 'disponibilidade', component: DisponibilidadeComponent, canActivateChild: [routeGuardGuard]
+        path: 'disponibilidade', component: DisponibilidadeComponent, canActivateChild: [AuthGuard],  data: { canUse: userTypeEnum.MEDICO }
       },
-    ], canActivate: [routeGuardGuard]
+      {
+        path: 'pacientes-agendados', component: PacientesAgendadosComponent, canActivateChild: [AuthGuard],  data: { canUse: userTypeEnum.MEDICO }
+      },
+    ], canActivate: [AuthGuard]
   },
 ];
 

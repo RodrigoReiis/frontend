@@ -6,8 +6,9 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { routerInterceptor } from 'src/interceptor';
 
 
 @NgModule({
@@ -24,7 +25,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [provideHttpClient()],
+  providers: [
+    provideHttpClient(
+      withInterceptors([routerInterceptor])
+    )
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
