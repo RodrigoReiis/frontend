@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import   { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { environment } from 'environments/environments';
+import { catchError } from 'rxjs';
 import { MedicoRequest } from 'src/models/Request/MedicoRequest.model';
 import { PacienteRequest } from 'src/models/Request/PacienteRequest.model';
 
@@ -9,31 +12,31 @@ import { PacienteRequest } from 'src/models/Request/PacienteRequest.model';
 })
 export class SignupService {
   apiUrl = environment.apiUrl;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private _snackBar: MatSnackBar, private route: Router) { }
 
   async cadastrarPaciente(paciente: PacienteRequest) {
-    this.http.post(this.apiUrl.concat(`/Usuario/cadastrar-paciente`), paciente).subscribe((response) => {
-      return new Promise((resolve, reject) => {
-        console.log(response, 'response')
-        resolve((res: any) => {
-          console.log(res, 'resd')
-        }),
-        reject((err: any) => {
-          console.log(err, 'erro')
-        })
-      })
-    })
+    this.http.post(this.apiUrl.concat(`/Usuario/cadastrar-paciente`), paciente).subscribe({
+      next: (response) => {
+        this.route.navigateByUrl('/');
+        return response;
+      },
+      error: (err) => {
+        catchError(err)
+        this._snackBar.open(err.error, 'Fechar');
+      }
+    });
+
   }
   async cadastrarMedico(medico: MedicoRequest) {
-    this.http.post(this.apiUrl.concat(`/Usuario/cadastrar-paciente`), medico).subscribe((response) => {
-      return new Promise((resolve, reject) => {
-        resolve((res: any) => {
-          console.log(res, 'resd')
-        }),
-        reject((err: any) => {
-          console.log(err, 'erro')
-        })
-      })
+    this.http.post(this.apiUrl.concat(`/Usuario/cadastrar-medico`), medico).subscribe({
+      next: (response) => {
+        this.route.navigateByUrl('/');
+        return response;
+      },
+      error: (err) => {
+        catchError(err)
+        this._snackBar.open(err.error, 'Fechar');
+      }
     })
   }
 }

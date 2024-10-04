@@ -28,10 +28,6 @@ export class CadastroComponent {
       this.form.get('cpf')?.value || '',
       this.form.get('senha')?.value || '',
     )
-    this.signupService.cadastrarPaciente(pacienteRequest).then((response) => {
-      console.log(response, 'RESP')
-      this.route.navigateByUrl('/');
-      return true
-    })
+    this.signupService.cadastrarPaciente(pacienteRequest);
   }
 }

@@ -27,7 +27,7 @@ import { routerInterceptor } from 'src/interceptor';
   ],
   providers: [
     provideHttpClient(
-      withInterceptors([routerInterceptor])
+      withInterceptors([routerInterceptor]),
     )
   ],
   bootstrap: [AppComponent]

@@ -30,10 +30,6 @@ export class CadastroMedicoComponent {
       this.form.get('crm')?.value || '',
       this.form.get('senha')?.value || '',
     )
-    this.signupService.cadastrarMedico(medicoRequest).then((response) => {
-      console.log(response, 'RESP')
-      this.route.navigateByUrl('/');
-      return true
-    })
+    this.signupService.cadastrarMedico(medicoRequest);
   }
 }
