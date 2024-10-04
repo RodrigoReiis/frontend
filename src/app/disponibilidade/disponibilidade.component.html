@@ -5,20 +5,21 @@
   </div>
 
   <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-    <form [formGroup]="form" class="space-y-6">
+    <form [formGroup]="form" class="space-y-6" (ngSubmit)="salvarDisponibilidade()">
       <div>
-        <label for="cpf" class="block text-sm font-medium leading-6 text-gray-900">Data disponível</label>
+        <label for="data" class="block text-sm font-medium leading-6 text-gray-900">Data disponível</label>
         <div class="mt-2">
           <input
-            id="cpf"
-            name="cpf"
+            id="data"
+            formControlName="data"
+            name="data"
             type="date"
             class="block w-full rounded-md border-0 py-1.5 px-3 text-sm placeholder:text-lg text-slate-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             required >
         </div>
       </div>
       <div>
-        <label for="cpf" class="block text-sm font-medium leading-6 text-gray-900">Disponível o dia inteiro?</label>
+        <label for="diaTodo" class="block text-sm font-medium leading-6 text-gray-900">Disponível o dia inteiro?</label>
         <div class="mt-2 flex-row w-full justify-between">
           <div class="flex">
             <input formControlName="diaTodo" type="radio" name="diaTodo" id="diaTodoSim" value="Sim" (change)="changeDiaTodo(true)">
@@ -31,14 +32,14 @@
         </div>
       </div>
       <div *ngIf="!isDiaTodo">
-        <label for="cpf" class="block text-sm font-medium leading-6 text-gray-900">Disponibilidade de horário</label>
+        <label class="block text-sm font-medium leading-6 text-gray-900">Disponibilidade de horário</label>
         <div class="mt-2">
           <label for="horaInicio">Início atendimento</label>
-          <input  class="px-4 text-sm rounded-sm border-slate-600 mx-4" type="time" name="diaTodo" id="horaInicio">
+          <input formControlName="horarioInicio" class="px-4 text-sm rounded-sm border-slate-600 mx-4" type="time" name="diaTodo" id="horaInicio">
         </div>
         <div class="mt-2">
           <label for="horaFim">Término atendimento</label>
-          <input class="px-4  mx-4"  type="time" name="diaTodo" id="horaFim">
+          <input formControlName="horarioTermino" class="px-4  mx-4"  type="time" name="diaTodo" id="horaFim">
         </div>
       </div>
       <div class="flex justify-center w-full flex-row">
