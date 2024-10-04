@@ -9,7 +9,7 @@
       <div>
         <mat-form-field class="w-full">
           <mat-label class="w-full">Medicos disponíveis</mat-label>
-          <mat-select matNativeControl required>
+          <mat-select matNativeControl required [(value)]="idMedico">
             @for (medico of listaMedicos; track medico) {
               <mat-option  matFormFieldControl="idMedico" [value]="medico.id">{{medico.nome}}</mat-option>
             }

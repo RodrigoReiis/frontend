@@ -25,8 +25,13 @@ import { provideMomentDateAdapter } from '@angular/material-moment-adapter';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AgendamentoComponent {
+  readonly dialogRef = inject(MatDialogRef<AgendamentoComponent>);
+  dialogData = inject(MAT_DIALOG_DATA);
+  idMedico: string = this.dialogData.idMedico;
+  listaMedicos: Medicos[] = this.dialogData.listaMedicos;
+
   form = new FormGroup({
-    idMedico: new FormControl(),
+    idMedico: new FormControl(this.idMedico),
     dataAgendamento: new FormControl(),
   })
 
@@ -42,11 +47,6 @@ export class AgendamentoComponent {
     }
     return '';
   });
-
-  readonly dialogRef = inject(MatDialogRef<AgendamentoComponent>);
-  dialogData = inject(MAT_DIALOG_DATA);
-  idMedico: string = this.dialogData.idMedico;
-  listaMedicos: Medicos[] = this.dialogData.listaMedicos;
 
 
   realizarAgendamento() {

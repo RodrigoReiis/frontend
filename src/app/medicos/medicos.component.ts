@@ -42,9 +42,5 @@ export class MedicosComponent implements OnInit {
         listaMedicos: this.listaMedicos
       }
     })
-
-    this.dialog.afterAllClosed.subscribe((result) => {
-      console.log(result);
-    })
   }
 }

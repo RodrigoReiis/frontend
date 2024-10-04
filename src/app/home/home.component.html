@@ -10,8 +10,7 @@
             <div class="ml-10 flex items-baseline space-x-4">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
               <a routerLink="/home" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Início</a>
-              <a routerLink="/home/medicos" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Médicos disponíveis</a>
-              <a routerLink="/home/agendamentos" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Agendamento</a>
+              <a routerLink="/home/medicos" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700  hover:text-white">Médicos disponíveis</a>
               <a routerLink="/home/disponibilidade" *ngIf="userTypeEnum.MEDICO == tipoUsuario" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Disponibilidade</a>
             </div>
           </div>
