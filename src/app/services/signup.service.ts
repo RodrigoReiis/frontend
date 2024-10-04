@@ -4,8 +4,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { environment } from 'environments/environments';
 import { catchError } from 'rxjs';
-import { MedicoRequest } from 'src/models/Request/MedicoRequest.model';
-import { PacienteRequest } from 'src/models/Request/PacienteRequest.model';
+import { MedicoRequest } from 'src/models/Request/medicoRequest.model';
+import { PacienteRequest } from 'src/models/Request/pacienteRequest.model';
 
 @Injectable({
   providedIn: 'root'

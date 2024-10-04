@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { SignupService } from '../services/signup.service';
-import { PacienteRequest } from 'src/models/Request/PacienteRequest.model';
+import { PacienteRequest } from 'src/models/Request/pacienteRequest.model';
 
 @Component({
   selector: 'app-cadastro',
