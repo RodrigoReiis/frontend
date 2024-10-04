@@ -17,9 +17,9 @@
         </mat-form-field>
       </div>
       <div>
-        <mat-form-field class="w-full" [formGroup]="formData">
+        <mat-form-field class="w-full" [formGroup]="form">
           <mat-label class="w-full">Datas disponíveis</mat-label>
-          <input matInput [matDatepicker]="picker" formControlName="dataInicio">
+          <input matInput [matDatepicker]="picker" formControlName="dataConsulta">
           <mat-hint>{{dateFormatString()}}</mat-hint>
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
@@ -29,16 +29,17 @@
       <label class="sr-only">
         Selecione um horário
       </label>
-        <ul id="timetable" class="grid w-full grid-cols-2 gap-2 mt-5">
-            <li>
-              <input type="radio" id="horario" value="" class="hidden peer" name="timetable">
-              <label for="horario"
+        <ul id="timetable" class="grid w-full grid-cols-4 gap-4 mt-5">
+            <li *ngFor="let hr of horarios; index" class="flex">
+              <input type="radio" formControlName="horarioAgenda" [value]="hr" class="peer hidden">
+              <label
                 class="inline-flex items-center justify-center w-full
                 p-2 text-sm font-medium text-center
                 bg-indigo-600 border rounded-lg
                 cursor-pointer text-white border-blue-600 hover:bg-indigo-900
-                peer-checked:bg-indigo-900">
-                10:00
+                peer-checked:bg-indigo-900"
+                (click)="setHorarioAgenda(hr)">
+                {{ hr }}
               </label>
             </li>
         </ul>
